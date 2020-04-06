@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace ParallaxStarter
 {
-    public class Player
+    public class Player : ISprite
     {
         /// <summary>
         /// A spritesheet containing a helicopter image
@@ -43,6 +43,8 @@ namespace ParallaxStarter
         /// </summary>
         public Vector2 Position { get; set; }
 
+        //public bool ScrollStop { get; set; } = false;
+
         /// <summary>
         /// How fast the player moves
         /// </summary>
@@ -55,7 +57,7 @@ namespace ParallaxStarter
         public Player(Texture2D spritesheet)
         {
             this.spritesheet = spritesheet;
-            this.Position = new Vector2(200, 200);
+            this.Position = new Vector2(200, 60);
         }
 
         /// <summary>
@@ -105,7 +107,7 @@ namespace ParallaxStarter
         /// Draws the player sprite
         /// </summary>
         /// <param name="spriteBatch"></param>
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
             // Render the helicopter, rotating about the rotors
             spriteBatch.Draw(spritesheet, Position, sourceRect, Color.White, angle, origin, 1f, SpriteEffects.None, 0.7f);
